@@ -1,4 +1,6 @@
+function App() {
+  const App = document.createElement('div');
+  App.textContent = "Hello World";
 
-document
-.getElementById('root')
-.appendChild(App());
+  return App;
+}
