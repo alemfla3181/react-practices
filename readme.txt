@@ -7,3 +7,5 @@ React Practices
 6. Perfomance
 7. 통합개발(Integration) **
    FE(React) + BE(spring boot, API Server)
+8. [참고1] webpack-practices *
+9. [참고2] babel-practices *
