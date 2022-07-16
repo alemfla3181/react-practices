@@ -1,10 +1,11 @@
 import React from 'react';
+import FoodListItem from './FoodListItem';
 
 function FoodList({foods}) {
   return (
     <div>
       <ul>
-        {this.props.foods.map((food) => {
+        {foods.map((food) => {
           <FoodListItem
           key={food.no}
           name={food.name}
