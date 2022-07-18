@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './assets/css/styles.css'
+import styles from './assets/scss/SearchBar.scss'
 
 function Searchbar() {
   return (

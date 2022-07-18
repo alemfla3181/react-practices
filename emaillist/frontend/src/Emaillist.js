@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import styles from './assets/css/styles.css'
+import styles from './assets/scss/Emaillist.scss';
 
 function Emaillist({ emails }) {
   console.log(emails);
