@@ -5,7 +5,7 @@ export default function App() {
   const imageRef = useRef(null);
 
   const onKeyPressInput = e => {
-    if(e.key === 'Enter')
+    if (e.key === 'Enter')
       console.log(e.target.value);
   }
   const onFocusInput = e => console.log('focused');
