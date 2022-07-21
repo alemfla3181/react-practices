@@ -7,6 +7,8 @@ const CardList = ({ title,  card  }) => {
     <div className={'CardList'}>
       <h1>{title}</h1>
       <br />
+      <h2>{card[0].title}</h2>
+      <h2></h2>
     </div>
   );
 }
