@@ -8,6 +8,7 @@ const TaskList = ({ name, done }) => {
     <li className={styles.TaskList__Task}>
       <input type='checkbox' checked={Checked} onChange={e => setChecked(Checked ? false : true)} /> {name} {done}
       <a href='#' className={styles.TaskList__Task__remove}></a>
+      <br/>
     </li>
   )
 }
