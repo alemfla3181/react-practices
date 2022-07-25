@@ -8,7 +8,7 @@ const CardList = ({ title, card }) => {
     <div className={styles.CardList}>
       <h1>{title}</h1>
       {card.map(e =>
-        <Card key={e.no} title={e.title} description={e.description} tasks={e.tasks} />)}
+        <Card key={e.no} title={e.title} description={e.description} status={e.status} tasks={e.tasks} />)}
     </div>
   );
 }
