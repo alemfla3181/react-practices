@@ -25,7 +25,7 @@ public class Kanbanboard07Application {
 			
 			@Override
 			public void run(ApplicationArguments args) throws Exception {
-				ScriptRunner scriptRunner = new ScriptRunner(sqlSessionFactory.getConfiguration().getEnvironment().getDataSource().getConnection());
+				ScriptRunner scriptRunner =	 new ScriptRunner(sqlSessionFactory.getConfiguration().getEnvironment().getDataSource().getConnection());
 				scriptRunner.runScript(Resources.getResourceAsReader("sql/db-setup.sql"));
 			}
 		};

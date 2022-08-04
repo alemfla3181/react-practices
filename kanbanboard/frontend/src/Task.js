@@ -17,7 +17,3 @@ export default function Task({ no, name, done, callback }) {
     </li>
   );
 }
-
-Task.propTypes = {
-  name: PropTypes.string.isRequired,
-};

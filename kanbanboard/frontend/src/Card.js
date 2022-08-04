@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import AddTask from "./AddTask";
 import styles from "./assets/css/styles.css";
 import TaskList from "./TaskList";
 
-const Card = ({ title, description, status, tasks }) => {
-  const [ShowDetail, setShowDetail] = useState(true);
+const Card = ({ no, title, description, status }) => {
+  const [showDetails, setShowDetails] = useState(false);
+  const [tasks, setTasks] = useState([]);
 
-  const onClickTitleHandler = (e) => {
-    setShowDetail(ShowDetail ? false : true);
-  };
 
   const styleSideColor = {
     position: "absolute",
@@ -19,7 +16,7 @@ const Card = ({ title, description, status, tasks }) => {
     height: "100%",
     backgroundColor: status === "ToDo" ? "blue" : status === "Doing" ? "green" : "yellowgreen",
   };
-  
+
   const changeTaskDone = async (no, done) => {
     try {
       const response = await fetch(`/api/task/${no}`, {
@@ -90,24 +87,44 @@ const Card = ({ title, description, status, tasks }) => {
   return (
     <div className={styles.Card}>
       <div style={styleSideColor} />
-      <div className={ShowDetail ? styles.Card__Title : styles.Card__Title__open} style={{ cursor: "pointer" }} onClick={onClickTitleHandler}>
+      <div
+        className={showDetails ? [styles.Card__Title, styles.Card__Title__Open].join(" ") : styles.Card__Title}
+        onClick={async () => {
+          if (!showDetails) {
+            try {
+              const response = await fetch(`/api/task?cardNo=${no}`, {
+                method: "get",
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+
+              if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+              }
+
+              const json = await response.json();
+              if (json.result !== "success") {
+                throw new Error(`${json.result} ${json.message}`);
+              }
+
+              setTasks(json.data);
+            } catch (err) {
+              console.log(err.message);
+            }
+          }
+
+          setShowDetails(!showDetails);
+        }}
+      >
         {title}
       </div>
-      {ShowDetail ? (
-        <div></div>
-      ) : (
+      {showDetails ? (
         <div className={styles.Card__Details}>
           {description}
-          <div className={styles.TaskList}>
-            <ul>
-              {tasks.map((e) => (
-                <TaskList key={e.no} name={e.name} done={e.done} />
-              ))}
-            </ul>
-            <AddTask />
-          </div>
+          <TaskList cardNo={no} tasks={tasks} callbackAddTask={addTask} callbackChangeTaskDone={changeTaskDone} />
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

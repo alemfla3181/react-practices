@@ -5,7 +5,7 @@ eclipse Ctrl+F11 (IDE Run)
 
 #### 빌드
 ```sh
-$ mvn kanbanboard/backend exec:exec clean package
+$ mvn -f kanbanboard/backend exec:exec clean package
 ```
 1.  결과: kanbanboard/backend/target/kanbanboard07.jar
 2.  실행
@@ -29,7 +29,7 @@ $ npm i react react-dom prop-types react-addons-update react-router react-router
 ```json
   "scripts": {
     "start": "npx webpack serve --config config/webpack.config.js --progress --mode development",
-    "build": "npx webpack --config config/webpack.config.js --mode production"
+    "build": "npm install && npx webpack --config config/webpack.config.js --mode production"
   }
 ```
 
@@ -37,6 +37,7 @@ $ npm i react react-dom prop-types react-addons-update react-router react-router
 ```sh
 $ npm start
 ```
+
 #### 빌드
 ```sh
 $ npm run build
