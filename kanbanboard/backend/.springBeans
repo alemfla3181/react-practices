@@ -9,7 +9,6 @@
 	<configs>
 	</configs>
 	<autoconfigs>
-		<config>java:com.example.demo.EmaillistApplication</config>
 		<config>java:com.example.demo.Kanbanboard07Application</config>
 	</autoconfigs>
 	<configSets>
