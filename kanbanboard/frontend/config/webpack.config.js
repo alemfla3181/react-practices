@@ -6,7 +6,7 @@ module.exports = function (env) {
     entry: path.resolve(`src/index.js`),
     output: {
       path: path.resolve('../backend/src/main/resources'),
-      filename: 'main.js',
+      filename: 'assets/js/main.js',
       assetModuleFilename: 'assets/images/[hash][ext]'
     },
     module: {
@@ -42,7 +42,8 @@ module.exports = function (env) {
       },
       liveReload: true,
       hot: true,
-      compress: true
+      compress: true,
+      historyApiFallback: true
     }
   }
 }
